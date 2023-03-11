@@ -15,6 +15,7 @@ public interface BankAccountService {
 
     List<BankAccountDto> bankAccountList();
     List<CustomerDto> listCustomer();
+    List<CustomerDto> searchCustomers(String keyword);
 
     CustomerDto getCustomer(Long customerId) throws customerNotFoundException;
 

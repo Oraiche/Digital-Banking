@@ -126,7 +126,15 @@ public class BankAccountImp implements BankAccountService{
 
         return customerDtos;
     }
-        @Override
+
+    @Override
+    public List<CustomerDto> searchCustomers(String keyword) {
+        List<Customer> listCustomers=customerRepository.searchCustomerByNameContains(keyword);
+        List<CustomerDto> customersDtos = listCustomers.stream().map(cust -> dtoMapper.fromCustomer(cust)).collect(Collectors.toList());
+        return customersDtos;
+    }
+
+    @Override
           public CustomerDto getCustomer(Long customerId) throws customerNotFoundException
            {
                  Customer customer = customerRepository.findById(customerId).
